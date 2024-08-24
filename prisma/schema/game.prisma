@@ -1,0 +1,10 @@
+model Game {
+  id            Int      @id @default(autoincrement())
+  userHome      Int      
+  userAway      Int
+  scoreHome     String   
+  scoreAway     String   
+  playedTime    DateTime
+  scheduledTime DateTime
+}
+

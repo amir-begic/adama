@@ -1,0 +1,14 @@
+model Standings {
+  id            Int      @id @default(autoincrement())
+  userId        Int      
+  totalPlayed   Int
+  wins          Int
+  draws         Int
+  losses        Int
+  points        Int
+  goalsFor      Int
+  goalsAgainst  Int
+  goalDifference Int
+  createdAt     DateTime @default(now())
+}
+

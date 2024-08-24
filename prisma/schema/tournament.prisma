@@ -1,0 +1,6 @@
+model Tournament {
+  id            Int      @id @default(autoincrement())
+  running       Boolean      
+  createdAt     DateTime @default(now())
+}
+
