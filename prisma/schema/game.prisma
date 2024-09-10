@@ -1,10 +1,13 @@
 model Game {
   id            Int      @id @default(autoincrement())
-  userHome      Int      
-  userAway      Int
+  userHomeId    Int      
+  userAwayId    Int
+  userHome      User  @relation("HomeGames", fields: [userHomeId], references: [id])
+  userAway      User  @relation("AwayGames", fields: [userAwayId], references: [id])
   scoreHome     String   
   scoreAway     String   
   playedTime    DateTime
   scheduledTime DateTime
+  confirmedByAway Boolean @default(false)
 }
 

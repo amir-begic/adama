@@ -5,4 +5,7 @@ model User {
   displayName String   @unique
   name        String?
   lastName    String?
+  homeGames Game[] @relation("HomeGames")
+  awayGames Game[] @relation("AwayGames")
+  standings Standings? 
 }
