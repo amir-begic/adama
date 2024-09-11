@@ -1,4 +1,4 @@
-model Standings {
+model Standing {
   id            Int      @id @default(autoincrement())
   teamId        Int
   user          User     @relation(fields: [userId], references: [id])    
