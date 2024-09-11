@@ -1,0 +1,39 @@
+services:
+  next-app:
+    container_name: adama_app
+    build:
+      context: .
+      dockerfile: dockerfile.dev  # Make sure you use the development Dockerfile
+    environment:
+      - DATABASE_URL=postgres://postgres:password@db:5432/mydb
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+          ignore:
+            - node_modules/
+    volumes:
+     # - ./src:/app/src       # Mount the source code to the container
+     # - ./public:/app/public # Mount the public directory to the container
+      - /app/node_modules    # Ensure the container's node_modules are used
+      - /app/.next
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    container_name: adama_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: adama
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
